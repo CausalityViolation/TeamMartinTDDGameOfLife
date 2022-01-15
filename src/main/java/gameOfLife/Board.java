@@ -10,4 +10,12 @@ public class Board {
     public int[][] getBoard() {
         return board;
     }
+
+    public void birth(int x, int y) {
+        board[x][y] = 1;
+    }
+
+    public void kill(int x, int y) {
+        board[x][y] = 0;
+    }
 }
