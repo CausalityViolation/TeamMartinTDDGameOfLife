@@ -39,10 +39,10 @@ public class Board {
 
     public int countLiveNeighbors(int x, int y) {
         int neighbors = 0;
-        for (int i = 0; i <= xAxis - 1; i++) {
-            for (int j = 0; j <= yAxis - 1; j++) {
-                if (i > x - 2 && i < x + 2 && j > y - 2 && j < y + 2) {
-                    neighbors += board[i][j];
+        for (int width = 0; width <= xAxis - 1; width++) {
+            for (int height = 0; height <= yAxis - 1; height++) {
+                if (width > x - 2 && width < x + 2 && height > y - 2 && height < y + 2) {
+                    neighbors += board[width][height];
                 }
             }
         }
