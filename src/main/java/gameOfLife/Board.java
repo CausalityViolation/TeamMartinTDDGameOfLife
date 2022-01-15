@@ -1,7 +1,7 @@
 package gameOfLife;
 
 public class Board {
-    private int[][] board;
+    private final int[][] board;
     int yAxis;
     int xAxis;
 
@@ -10,9 +10,6 @@ public class Board {
         yAxis = y;
         board = new int[x][y];
     }
-
-
-
 
     public int[][] getBoard() {
         return board;
@@ -42,10 +39,10 @@ public class Board {
 
     public int countLiveNeighbors(int x, int y) {
         int neighbors = 0;
-        for (int i = 0; i <= xAxis-1; i++) {
-            for (int j = 0; j <= yAxis-1; j++) {
-                if (i>x-2 && i<x+2 && j>y-2 && j<y+2){
-                    neighbors+=board[i][j];
+        for (int i = 0; i <= xAxis - 1; i++) {
+            for (int j = 0; j <= yAxis - 1; j++) {
+                if (i > x - 2 && i < x + 2 && j > y - 2 && j < y + 2) {
+                    neighbors += board[i][j];
                 }
             }
         }
