@@ -11,6 +11,9 @@ public class Board {
         board = new int[x][y];
     }
 
+
+
+
     public int[][] getBoard() {
         return board;
     }
@@ -48,5 +51,13 @@ public class Board {
         }
         neighbors -= board[x][y];
         return neighbors;
+    }
+
+    public int getY() {
+        return yAxis;
+    }
+
+    public int getX() {
+        return xAxis;
     }
 }
