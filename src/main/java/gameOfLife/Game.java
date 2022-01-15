@@ -1,39 +1,53 @@
 package gameOfLife;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
 
     static int iterationNumber = 1;
-    static Scanner input = new Scanner(System.in);
-
 
     public static void main(String[] args) {
-        Board board = new Board(3, 3);
+        Board board = createRandomBoard(10, 10);
         Engine engine = new Engine();
-        board.birth(2, 1);
-        board.birth(2, 2);
-        board.birth(0, 1);
-        board.birth(1, 1);
-        board.birth(0, 2);
 
-
+        //noinspection InfiniteLoopStatement
         while (true) {
+            gameLoop(board, engine);
+        }
+    }
 
-            System.out.println("Press ENTER to Iterate.");
-            if (!input.nextLine().equalsIgnoreCase("exit")) {
+    private static void gameLoop(Board board, Engine engine) {
 
-                System.out.println("===================");
-                System.out.println("Iteration " + iterationNumber);
-                System.out.println(board.printable());
-                System.out.println("===================");
-                engine.evolve(board);
+        Scanner input = new Scanner(System.in);
 
-                iterationNumber++;
+        System.out.println("Press ENTER to Iterate.");
+        if (!input.nextLine().equalsIgnoreCase("exit")) {
 
-            } else {
-                System.exit(0);
+            System.out.println("===================");
+            System.out.println("Iteration " + iterationNumber);
+            System.out.println(board.printable());
+            System.out.println("===================");
+            engine.evolve(board);
+
+            iterationNumber++;
+
+        } else {
+            System.exit(0);
+        }
+    }
+
+    private static Board createRandomBoard(int x, int y) {
+        Random rand = new Random();
+        Board board = new Board(x, y);
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                boolean alive = rand.nextBoolean();
+                if (alive) {
+                    board.birth(i, j);
+                }
             }
         }
+        return board;
     }
 }
