@@ -2,9 +2,13 @@ package gameOfLife;
 
 public class Board {
     private int[][] board;
+    int yAxis;
+    int xAxis;
 
     public Board(int x, int y) {
-        board= new int[x][y];
+        xAxis = x;
+        yAxis = y;
+        board = new int[x][y];
     }
 
     public int[][] getBoard() {
