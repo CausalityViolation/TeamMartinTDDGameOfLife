@@ -4,19 +4,19 @@ public class Engine {
     public void evolve(Board board) {
 
         int[][] nextGeneration = new int[board.getX()][board.getY()];
-        for (int i = 0; i < board.getX(); i++) {
-            for (int j = 0; j < board.getY(); j++) {
-                nextGeneration[i][j] = board.countLiveNeighbors(i, j);
+        for (int width = 0; width < board.getX(); width++) {
+            for (int height = 0; height < board.getY(); height++) {
+                nextGeneration[width][height] = board.countLiveNeighbors(width, height);
             }
         }
 
-        for (int i = 0; i < board.getX(); i++) {
-            for (int j = 0; j < board.getY(); j++) {
-                if (nextGeneration[i][j]<2 || nextGeneration[i][j]>3) {
-                    board.kill(i,j);
+        for (int width = 0; width < board.getX(); width++) {
+            for (int height = 0; height < board.getY(); height++) {
+                if (nextGeneration[width][height]<2 || nextGeneration[width][height]>3) {
+                    board.kill(width,height);
                 }
-                if (nextGeneration[i][j]==3) {
-                    board.birth(i, j);
+                if (nextGeneration[width][height]==3) {
+                    board.birth(width, height);
                 }
             }
         }
