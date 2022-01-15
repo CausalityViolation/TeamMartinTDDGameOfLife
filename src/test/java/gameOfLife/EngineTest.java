@@ -34,10 +34,39 @@ public class EngineTest {
         assertEquals(1, board.getBoard()[0][0]);
 
     }
+
+    @Test
+    public void cellWithMoreThanThreeLiveNeighborsDie() {
+
+        board.birth(0, 0);
+        board.birth(0, 1);
+        board.birth(1, 1);
+        board.birth(2, 2);
+        board.birth(0, 2);
+
+        engine.evolve(board);
+
+        board.countLiveNeighbors(0, 0);
+
+        assertEquals(0, board.getBoard()[1][1]);
+
+    }
+
+    @Test
+    public void cellWithExactlyThreeLiveNeighborsResurrect() {
+
+        board.birth(0, 0);
+        board.birth(0, 1);
+        board.birth(2, 2);
+
+        engine.evolve(board);
+
+        board.countLiveNeighbors(0, 0);
+
+        assertEquals(1, board.getBoard()[1][1]);
+
+    }
 }
-
-
-
 
 /*
 
