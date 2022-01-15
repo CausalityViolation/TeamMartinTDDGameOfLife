@@ -12,8 +12,11 @@ public class Engine {
 
         for (int i = 0; i < board.getX(); i++) {
             for (int j = 0; j < board.getY(); j++) {
-                if (nextGeneration[i][j]<2) {
+                if (nextGeneration[i][j]<2 || nextGeneration[i][j]>3) {
                     board.kill(i,j);
+                }
+                if (nextGeneration[i][j]==3) {
+                    board.birth(i, j);
                 }
             }
         }
