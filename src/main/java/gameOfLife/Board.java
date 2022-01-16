@@ -1,9 +1,10 @@
 package gameOfLife;
 
 public class Board {
+
     private final int[][] board;
-    int yAxis;
-    int xAxis;
+    private final int yAxis;
+    private final int xAxis;
 
     public Board(int x, int y) {
         xAxis = x;
@@ -38,10 +39,21 @@ public class Board {
     }
 
     public int countLiveNeighbors(int x, int y) {
+
         int neighbors = 0;
-        for (int width = 0; width <= xAxis - 1; width++) {
-            for (int height = 0; height <= yAxis - 1; height++) {
-                if (width > x - 2 && width < x + 2 && height > y - 2 && height < y + 2) {
+
+        int verticalLength = xAxis - 1;
+        int horizontalLength = yAxis - 1;
+
+        int horizontalSpanStart = x - 2;
+        int horizontalSpanEnd = x + 2;
+
+        int verticalSpanStart = y - 2;
+        int verticalSpanEnd = y + 2;
+
+        for (int width = 0; width <= verticalLength; width++) {
+            for (int height = 0; height <= horizontalLength; height++) {
+                if (width > horizontalSpanStart && width < horizontalSpanEnd && height > verticalSpanStart && height < verticalSpanEnd) {
                     neighbors += board[width][height];
                 }
             }
