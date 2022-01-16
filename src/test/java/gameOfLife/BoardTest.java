@@ -71,6 +71,15 @@ public class BoardTest {
 
         assertEquals(4, board.countLiveNeighbors(1, 1));
     }
+
+    @Test
+    public void checkThatAsymmetricalBoardsWork() {
+
+        Board testBoard = new Board(2, 17);
+
+        assertArrayEquals(new int[2][17], testBoard.getBoard());
+
+    }
 }
 
 
