@@ -7,8 +7,7 @@ public class Engine {
 
     public void evolve(Board board) {
 
-        int[][] nextGeneration = new int[board.getX()][board.getY()];
-        getAllNeighbors(board, nextGeneration);
+        int[][] nextGeneration = getAllNeighbors(board);
 
         for (int width = 0; width < board.getX(); width++) {
             for (int height = 0; height < board.getY(); height++) {
@@ -22,11 +21,15 @@ public class Engine {
         }
     }
 
-    private void getAllNeighbors(Board board, int[][] nextGeneration) {
+    private int[][] getAllNeighbors(Board board) {
+        int[][] nextGen = new int[board.getX()][board.getY()];
+
         for (int width = 0; width < board.getX(); width++) {
             for (int height = 0; height < board.getY(); height++) {
-                nextGeneration[width][height] = board.countLiveNeighbors(width, height);
+                nextGen[width][height] = board.countLiveNeighbors(width, height);
             }
         }
+
+        return nextGen;
     }
 }
