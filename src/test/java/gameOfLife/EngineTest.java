@@ -13,7 +13,6 @@ public class EngineTest {
     public void cellsWithFewerThanTwoLiveNeighborsDies() {
         board.birth(0, 0);
         board.birth(0, 1);
-        board.countLiveNeighbors(0, 0);
 
         engine.evolve(board);
 
@@ -27,8 +26,6 @@ public class EngineTest {
         board.birth(0, 0);
         board.birth(0, 1);
         board.birth(1, 1);
-        board.countLiveNeighbors(0, 0);
-
         engine.evolve(board);
 
         assertEquals(1, board.getBoard()[0][0]);
@@ -58,8 +55,6 @@ public class EngineTest {
         board.birth(2, 2);
 
         engine.evolve(board);
-
-        board.countLiveNeighbors(0, 0);
 
         assertEquals(1, board.getBoard()[1][1]);
 
