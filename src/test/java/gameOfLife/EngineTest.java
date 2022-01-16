@@ -46,8 +46,6 @@ public class EngineTest {
 
         engine.evolve(board);
 
-        board.countLiveNeighbors(0, 0);
-
         assertEquals(0, board.getBoard()[1][1]);
 
     }
@@ -64,6 +62,17 @@ public class EngineTest {
         board.countLiveNeighbors(0, 0);
 
         assertEquals(1, board.getBoard()[1][1]);
+
+    }
+
+    @Test
+    public void checkThatARandomBoardIsCreatedProperly(){
+
+        Engine testEngine = new Engine();
+        Board testBoard = testEngine.createRandomBoard(10, 10);
+
+        assertEquals(testBoard.getX(), 10);
+        assertEquals(testBoard.getY(), 10);
 
     }
 }
