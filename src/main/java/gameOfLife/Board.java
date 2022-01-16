@@ -27,9 +27,9 @@ public class Board {
     public String printable() {
 
         String printableBoard = "";
-        for (int height = 0; height < yAxis; height++) {
+        for (int height = 0; height < xAxis; height++) {
             printableBoard = printableBoard.concat("|");
-            for (int width = 0; width < xAxis; width++) {
+            for (int width = 0; width < yAxis; width++) {
                 printableBoard = printableBoard.concat(board[height][width] + " ");
             }
             printableBoard = printableBoard.substring(0, printableBoard.length() - 1);
