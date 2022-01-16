@@ -8,11 +8,7 @@ public class Engine {
     public void evolve(Board board) {
 
         int[][] nextGeneration = new int[board.getX()][board.getY()];
-        for (int width = 0; width < board.getX(); width++) {
-            for (int height = 0; height < board.getY(); height++) {
-                nextGeneration[width][height] = board.countLiveNeighbors(width, height);
-            }
-        }
+        getAllNeighbors(board, nextGeneration);
 
         for (int width = 0; width < board.getX(); width++) {
             for (int height = 0; height < board.getY(); height++) {
@@ -22,6 +18,14 @@ public class Engine {
                 if (nextGeneration[width][height]==THREE_LIVE_NEIGHBORS) {
                     board.birth(width, height);
                 }
+            }
+        }
+    }
+
+    private void getAllNeighbors(Board board, int[][] nextGeneration) {
+        for (int width = 0; width < board.getX(); width++) {
+            for (int height = 0; height < board.getY(); height++) {
+                nextGeneration[width][height] = board.countLiveNeighbors(width, height);
             }
         }
     }
